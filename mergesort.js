@@ -14,6 +14,7 @@ function merge(arrayOne, arrayTwo) {
   let mergedArray = [];
 
   while (arrayOne.length > 0 || arrayTwo.length > 0) {
+
     if (!arrayOne.length) {
       return mergedArray.concat(arrayTwo);
     }
@@ -43,15 +44,28 @@ function merge(arrayOne, arrayTwo) {
 // }
 
 function mergeSort(array) {
-  debugger;
+
   if (array.length <= 1) {
     return array;
   }
-  let splitArray = split(array);
-  splitArray.forEach((el) => {
-    el = mergeSort(el);
+  let newArray = split(array).map((el) => {
+    return mergeSort(el);
   });
-  let merged = merge(...splitArray);
+  let merged = merge(...newArray);
   console.log(merged);
   return merged;
 }
+
+// function mergeSort(array) {
+//   // debugger;
+//   if (array.length <= 1) {
+//     return array;
+//   }
+//   // let splitArray = split(array);
+//   array = split(array).map((el) => {
+//     el = mergeSort(el);
+//   });
+//   let merged = merge(...array);
+//   console.log(merged);
+//   return merged;
+// }
